@@ -13,12 +13,12 @@
     box-sizing: border-box;
 }
 
-/* Apply Playfair Display to headings */
+/* Apply Playfair font to headings */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
 }
 
-/* Apply Lato to body text */
+/* Apply Lato to text */
 body, p, span, a, li {
     font-family: 'Lato', sans-serif;
 }
@@ -36,7 +36,7 @@ body {
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
-/* Navigation */
+/************ Navigation ***********/
 .nav {
     background: var(--light-blue);
     padding: 15px 20px;
@@ -44,34 +44,49 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* width: 100%; */
     height: 5rem;
-    
 }
 
-.logo, img{
-    width: 100px;
+/* logo on nav bar */
+.logo-img {
+    display: flex;
+    align-items: center;
+    height: 100%; 
 }
+
+/* Logo image adjustements */
+.logo-img img {
+    width: auto; 
+    height: 90px; 
+    max-width: 120px; 
+    padding: 5px;
+    object-fit: contain; /* Ensure image fits nicely */
+    border-radius: 8px; 
+    transition: transform 0.2s ease;
+}
+
 
 .nav-links {
     display: flex;
     gap: 30px;
+    position: relative;
+
 }
 
 .nav-link {
     padding: 8px 16px;
-    /* border: 1px solid var(--light-orange); */
     cursor: pointer;
-    /* background: white; */
     color: var(--creamn);
     transition: all 0.3s;
     font-weight: 500;
+    font-weight: bold;
 }
 
 .nav-link:hover, .nav-link.active {
-    background: var(--light-orange);
+    background: var(--cream);
     color: var(--brown);
     border-color: var(--light-orange);
+    border-radius: 10px;
 }
 
 .cta-button {
@@ -82,11 +97,13 @@ body {
     cursor: pointer;
     font-weight: bold;
     transition: all 0.3s;
+    border-radius: 10px;
 }
 
 .cta-button:hover {
     background: var(--orange);
     color: white;
+    border-radius: 10px;
 }
 
 /* Page Content */
@@ -96,28 +113,83 @@ body {
 }
 
 .page.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Home Page */
 .hero {
-    background: linear-gradient(135deg, var(--cream) 0%, #e8e2d5 100%);
-    padding: 60px 20px;
-    text-align: center;
-    border: 2px solid var(--light-orange);
-    margin-bottom: 40px;
-}
-
-.hero h1 {
-    font-size: 48px;
+    width: 100%;
+    position: relative;
+    height: 100vh;
+    min-height: 500px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column: 2;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
-    color: var(--brown);
+
 }
 
-.hero p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    color: var(--brown);
+.hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+}
+
+.hero-overlay {
+    width: 100%;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hero-overlay img{
+    width: 250px;
+    padding: 10px;
+    position: relative;
+}
+
+.hero-overlay h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+}
+
+.hero-overlay p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    opacity: 0.95;
+}
+
+.hero-overlay .cta-button {
+    font-size: 1.1rem;
+    padding: 15px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.hero-overlay .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .features {
@@ -329,12 +401,3 @@ body {
     color: var(--brown);
 }
 
-.wireframe-note {
-    background: #f9f6f0;
-    padding: 15px;
-    border: 2px solid var(--light-orange);
-    margin: 20px 0;
-    border-radius: 5px;
-    font-style: italic;
-    color: var(--brown);
-}
